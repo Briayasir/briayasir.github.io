@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,16 +9,34 @@
 </head>
 <body>
 
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="theme-switch" />
+      <span class="slider"></span>
+    </label>
+    <span id="theme-label">Light</span>
+  </div>
+
   <!-- Banner -->
   <header class="banner">
     <div class="banner-content">
-      <h1 class="name">Bria Yasir</h1>
-      <p id="typewriter"></p>
+      <h1 class="name fade-in">Bria Yasir</h1>
+      <p id="typewriter" class="fade-in delay-1"></p>
     </div>
   </header>
 
+  <!-- About Section -->
+  <section class="about section fade-in">
+    <h2>About Me</h2>
+    <p>
+      I am a passionate Data Engineer with experience in building scalable data pipelines, designing data warehouses, and developing real-time dashboards.
+      Skilled in Python, SQL, AWS, and cloud technologies. Dedicated to solving complex problems with clean and efficient code.
+    </p>
+  </section>
+
   <!-- Skills Section -->
-  <section class="skills section">
+  <section class="skills section fade-in">
     <h2>Skills</h2>
     <div class="skills-grid">
       <div class="skill-card">
@@ -37,31 +55,43 @@
   </section>
 
   <!-- Projects Section -->
-  <section class="projects section">
+  <section class="projects section fade-in">
     <h2>Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Data Pipeline Automation" />
         <h3>Data Pipeline Automation</h3>
-        <p>Automated ETL pipeline using Python and AWS Lambda.</p>
+        <p><strong>Description:</strong> Automated ETL pipeline using Python and AWS Lambda for processing large datasets efficiently.</p>
+        <p><strong>Technologies:</strong> Python, AWS Lambda, S3, Glue</p>
+        <p><strong>Link:</strong> <a href="https://github.com/briayasir/data-pipeline" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
       </div>
       <div class="project-card">
         <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Data Warehouse Design" />
         <h3>Data Warehouse Design</h3>
-        <p>Designed scalable Redshift warehouse for analytics.</p>
+        <p><strong>Description:</strong> Designed scalable Redshift warehouse architecture for complex analytics queries.</p>
+        <p><strong>Technologies:</strong> AWS Redshift, SQL, ETL</p>
+        <p><strong>Link:</strong> <a href="https://github.com/briayasir/data-warehouse" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
       </div>
       <div class="project-card">
         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Real-time Dashboard" />
         <h3>Real-time Dashboard</h3>
-        <p>Built real-time KPI dashboard with Streamlit.</p>
+        <p><strong>Description:</strong> Built real-time KPI dashboard with Streamlit to monitor business metrics live.</p>
+        <p><strong>Technologies:</strong> Streamlit, Python, REST APIs</p>
+        <p><strong>Link:</strong> <a href="https://github.com/briayasir/realtime-dashboard" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
       </div>
     </div>
     <a href="https://github.com/briayasir" class="github-btn" target="_blank" rel="noopener noreferrer">View More on GitHub</a>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 Bria Yasir</p>
   </footer>
+
+  <!-- LinkedIn Icon -->
+  <a href="https://linkedin.com/in/briayasir" target="_blank" class="linkedin-icon" rel="noopener noreferrer">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+  </a>
 
 </body>
 </html>
