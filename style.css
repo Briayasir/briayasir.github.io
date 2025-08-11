@@ -1,89 +1,103 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: all 0.3s ease;
 }
 
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --header-bg: #f0f0f0;
+    --bg: #ffffff;
+    --text: #000000;
 }
 
 body.dark {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --header-bg: #1e1e1e;
+    --bg: #121212;
+    --text: #ffffff;
 }
 
-header {
-    background-color: var(--header-bg);
-    padding: 20px 0;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2em;
-}
-
-header p {
-    margin: 5px 0 10px;
-}
-
+/* Theme Toggle */
 #theme-toggle {
-    border: none;
-    background: none;
-    font-size: 1.5em;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Sections */
+section {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Skills */
+#skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+}
+#skills li {
+    background: var(--text);
+    color: var(--bg);
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+/* Projects */
+.project-card {
+    background: rgba(0,0,0,0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.project-card:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background: var(--bg);
+    color: var(--text);
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+.close-btn {
+    float: right;
+    font-size: 24px;
     cursor: pointer;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-    padding: 20px 0;
-}
-
-h2 {
-    border-bottom: 2px solid var(--text-color);
-    padding-bottom: 5px;
-}
-
-.skills-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.skills-list li {
-    background: var(--header-bg);
-    margin: 5px;
-    padding: 10px 15px;
-    border-radius: 5px;
-}
-
-.project {
-    margin-bottom: 20px;
-    padding: 10px;
-    background: var(--header-bg);
-    border-radius: 5px;
-}
-
-a {
-    color: var(--text-color);
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: var(--header-bg);
+/* LinkedIn Icon */
+#linkedin-link {
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #0A66C2;
 }
