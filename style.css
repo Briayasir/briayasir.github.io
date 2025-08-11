@@ -1,14 +1,15 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: var(--bg);
-    color: var(--text);
-    transition: all 0.3s ease;
-}
-
 :root {
     --bg: #ffffff;
     --text: #000000;
+    --transition: 0.4s ease;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color var(--transition), color var(--transition);
 }
 
 body.dark {
@@ -16,25 +17,55 @@ body.dark {
     --text: #ffffff;
 }
 
-/* Theme Toggle */
-#theme-toggle {
+/* Toggle Button Wrapper */
+.toggle-wrapper {
     position: fixed;
     top: 15px;
     right: 20px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight: bold;
+    z-index: 100;
 }
 
-/* Header */
+/* iOS Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+.switch input { display: none; }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: var(--transition);
+    border-radius: 26px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px; width: 20px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: var(--transition);
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #4cafef;
+}
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* Sections */
 header {
     text-align: center;
     padding: 50px 20px;
 }
-
-/* Sections */
 section {
     padding: 20px;
     max-width: 800px;
@@ -46,8 +77,8 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 0;
     list-style: none;
+    padding: 0;
 }
 #skills li {
     background: var(--text);
@@ -86,6 +117,7 @@ section {
     border-radius: 10px;
     width: 80%;
     max-width: 500px;
+    transition: background-color var(--transition), color var(--transition);
 }
 .close-btn {
     float: right;
