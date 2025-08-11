@@ -1,50 +1,59 @@
-// Theme Toggle
-const toggleBtn = document.getElementById('theme-toggle');
-const themeText = document.getElementById('theme-text');
-const themeIcon = document.getElementById('theme-icon');
+// Detect System Theme
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const body = document.body;
+const checkbox = document.getElementById("theme-checkbox");
+const themeLabel = document.getElementById("theme-label");
 
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-    themeText.textContent = 'Dark';
-    themeIcon.className = 'fas fa-sun';
+if (localStorage.getItem("theme")) {
+    if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark");
+        checkbox.checked = true;
+        themeLabel.textContent = "Dark";
+    } else {
+        body.classList.remove("dark");
+        checkbox.checked = false;
+        themeLabel.textContent = "Light";
+    }
+} else {
+    if (prefersDark) {
+        body.classList.add("dark");
+        checkbox.checked = true;
+        themeLabel.textContent = "Dark";
+    }
 }
 
-toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    let theme = 'light';
-    if (document.body.classList.contains('dark')) {
-        theme = 'dark';
-        themeText.textContent = 'Dark';
-        themeIcon.className = 'fas fa-sun';
+// Toggle Theme
+checkbox.addEventListener("change", () => {
+    body.classList.toggle("dark");
+    if (body.classList.contains("dark")) {
+        themeLabel.textContent = "Dark";
+        localStorage.setItem("theme", "dark");
     } else {
-        themeText.textContent = 'Light';
-        themeIcon.className = 'fas fa-moon';
+        themeLabel.textContent = "Light";
+        localStorage.setItem("theme", "light");
     }
-    localStorage.setItem('theme', theme);
 });
 
 // Project Modal
-const projectCards = document.querySelectorAll('.project-card');
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modal-title');
-const modalDesc = document.getElementById('modal-desc');
-const closeBtn = document.querySelector('.close-btn');
+const projectCards = document.querySelectorAll(".project-card");
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalDesc = document.getElementById("modal-desc");
+const closeBtn = document.querySelector(".close-btn");
 
 projectCards.forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener("click", () => {
         modalTitle.textContent = card.dataset.title;
         modalDesc.textContent = card.dataset.desc;
-        modal.style.display = 'block';
+        modal.style.display = "block";
     });
 });
 
-closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
 });
-
-window.addEventListener('click', (e) => {
+window.addEventListener("click", (e) => {
     if (e.target === modal) {
-        modal.style.display = 'none';
+        modal.style.display = "none";
     }
 });
-
