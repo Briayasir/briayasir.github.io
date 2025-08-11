@@ -2,107 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bria Yasir | Data Engineer</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bria Yasir - Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  
-  <!-- Navbar -->
-  <header>
-    <nav>
-      <h1>Bria Yasir</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="theme-switch-wrapper">
-        <label class="theme-switch">
-          <input type="checkbox" id="theme-toggle">
-          <span class="slider"></span>
-        </label>
-        <span id="theme-label">Light</span>
-      </div>
-    </nav>
-  </header>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="theme-switch">
+      <span class="slider"></span>
+    </label>
+    <span id="theme-label">Light</span>
+  </div>
 
   <!-- Hero Section -->
-  <section id="hero">
+  <section class="hero">
     <div class="hero-content">
-      <img src="https://via.placeholder.com/200" alt="Profile" class="profile-pic">
-      <h2>Hello, I'm <span>Bria Yasir</span></h2>
-      <p>Data Engineer | Cloud Enthusiast | Problem Solver</p>
+      <img src="https://via.placeholder.com/150" alt="Profile" class="profile-pic"/>
+      <h1 class="fade-in">Bria Yasir</h1>
+      <p id="typewriter" class="fade-in delay-1"></p>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am a passionate Data Engineer with expertise in designing, building, and maintaining scalable data pipelines. I love working with modern cloud technologies and solving challenging data problems.</p>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
+  <!-- Skills Section -->
+  <section class="skills">
     <h2>Skills</h2>
     <div class="skills-grid">
-      <div class="skill-card" data-skill="Python programming for data processing and automation.">
-        <img src="https://via.placeholder.com/80" alt="Python">
+      <div class="skill-card" data-skill="Python expert with 3+ years experience">
+        <img src="https://via.placeholder.com/80" alt="Python"/>
         <p>Python</p>
       </div>
-      <div class="skill-card" data-skill="SQL for querying and managing relational databases.">
-        <img src="https://via.placeholder.com/80" alt="SQL">
+      <div class="skill-card" data-skill="Skilled in building ETL pipelines">
+        <img src="https://via.placeholder.com/80" alt="SQL"/>
         <p>SQL</p>
       </div>
-      <div class="skill-card" data-skill="AWS cloud services for data storage and processing.">
-        <img src="https://via.placeholder.com/80" alt="AWS">
+      <div class="skill-card" data-skill="AWS cloud services for data engineering">
+        <img src="https://via.placeholder.com/80" alt="AWS"/>
         <p>AWS</p>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects">
+  <!-- Projects Section -->
+  <section class="projects">
     <h2>Projects</h2>
     <div class="projects-grid">
-      <div class="project-card" data-project="Project 1 details: Built a real-time ETL pipeline using AWS Lambda, S3, and Redshift.">
-        <img src="https://via.placeholder.com/300x200" alt="Project 1">
-        <h3>Real-Time ETL Pipeline</h3>
+      <div class="project-card" data-title="Project One" data-desc="Description of project one" data-img="https://via.placeholder.com/400">
+        <img src="https://via.placeholder.com/300" alt="Project 1"/>
+        <h3>Project One</h3>
       </div>
-      <div class="project-card" data-project="Project 2 details: Developed a data warehouse solution for business analytics.">
-        <img src="https://via.placeholder.com/300x200" alt="Project 2">
-        <h3>Data Warehouse</h3>
+      <div class="project-card" data-title="Project Two" data-desc="Description of project two" data-img="https://via.placeholder.com/400">
+        <img src="https://via.placeholder.com/300" alt="Project 2"/>
+        <h3>Project Two</h3>
       </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Interested in working together? Reach out via email or LinkedIn!</p>
-    <div class="contact-links">
-      <a href="#" target="_blank">LinkedIn</a>
-      <a href="#" target="_blank">GitHub</a>
-      <a href="mailto:youremail@example.com">Email</a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Bria Yasir. All rights reserved.</p>
+    <p>© 2025 Bria Yasir. All Rights Reserved.</p>
   </footer>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
+  <!-- LinkedIn -->
+  <a href="#" class="linkedin-icon" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"/>
+  </a>
+
+  <!-- Skill Modal -->
+  <div id="skill-modal" class="modal">
     <div class="modal-content">
-      <span id="modal-close">&times;</span>
-      <p id="modal-text"></p>
+      <span class="close">&times;</span>
+      <p id="skill-info"></p>
     </div>
   </div>
 
+  <!-- Project Modal -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="project-img" src="" alt="Project"/>
+      <h3 id="project-title"></h3>
+      <p id="project-desc"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
