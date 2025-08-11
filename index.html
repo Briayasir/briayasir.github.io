@@ -5,71 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bria Yasir - Data Engineer</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<header>
-    <div class="container">
+
+    <!-- Theme Toggle -->
+    <div id="theme-toggle">
+        <span id="theme-text">Light</span>
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
         <h1>Bria Yasir</h1>
         <p>Data Engineer</p>
-        <button id="theme-toggle">🌙</button>
-    </div>
-</header>
+    </header>
 
-<section id="about">
-    <div class="container">
+    <!-- About Section -->
+    <section id="about">
         <h2>About Me</h2>
-        <p>I am a Data Engineer with expertise in designing, building, and maintaining scalable data pipelines and architectures. Skilled in big data technologies, cloud platforms, and automation tools, I transform raw data into valuable insights that drive strategic decision-making.</p>
-    </div>
-</section>
+        <p>Data Engineer with expertise in building scalable data pipelines, optimizing database performance, and deploying analytics solutions using modern cloud technologies.</p>
+    </section>
 
-<section id="skills">
-    <div class="container">
+    <!-- Skills Section -->
+    <section id="skills">
         <h2>Skills</h2>
-        <ul class="skills-list">
+        <ul>
             <li>Python</li>
             <li>SQL</li>
             <li>Hadoop</li>
             <li>Spark</li>
             <li>AWS</li>
-            <li>Apache Airflow</li>
+            <li>Airflow</li>
             <li>ETL Pipelines</li>
             <li>Data Warehousing</li>
         </ul>
-    </div>
-</section>
+    </section>
 
-<section id="projects">
-    <div class="container">
+    <!-- Projects Section -->
+    <section id="projects">
         <h2>Projects</h2>
-        <div class="project">
-            <h3>Real-time Data Pipeline for E-commerce Analytics</h3>
-            <p>Designed and implemented a real-time data processing pipeline using Apache Kafka and Spark Streaming to process millions of events per day, enabling instant analytics and reporting for business stakeholders.</p>
+        <div class="project-card" data-title="Real-time Data Pipeline" data-desc="Designed and deployed a real-time streaming data pipeline for e-commerce analytics using Kafka, Spark Streaming, and AWS S3.">
+            <h3>Real-time Data Pipeline</h3>
         </div>
-        <div class="project">
-            <h3>Cloud-based Data Lake with AWS S3 & Glue</h3>
-            <p>Built a secure and scalable data lake on AWS using S3, Glue, and Athena, enabling centralized storage and efficient querying of large datasets across multiple departments.</p>
+        <div class="project-card" data-title="Cloud Data Lake" data-desc="Built a cloud-based data lake using AWS S3, Glue, and Athena for scalable storage and querying of large datasets.">
+            <h3>Cloud Data Lake</h3>
         </div>
-        <div class="project">
-            <h3>ETL Workflow Automation with Apache Airflow</h3>
-            <p>Developed automated ETL workflows with Apache Airflow to extract, transform, and load data from diverse sources, reducing processing time by 40% and ensuring data accuracy.</p>
+        <div class="project-card" data-title="ETL Workflow Automation" data-desc="Automated ETL workflows with Apache Airflow, improving data ingestion speed and reliability.">
+            <h3>ETL Workflow Automation</h3>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="contact">
-    <div class="container">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:bria.yasir@example.com">bria.yasir@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/briayasir" target="_blank">github.com/briayasir</a></p>
-        <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/bria-yasir</a></p>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-desc"></p>
+        </div>
     </div>
-</section>
 
-<footer>
-    <div class="container">
-        <p>© 2025 Bria Yasir. All rights reserved.</p>
-    </div>
-</footer>
+    <!-- LinkedIn Icon -->
+    <a href="#" target="_blank" id="linkedin-link">
+        <i class="fab fa-linkedin"></i>
+    </a>
+
+    <script src="script.js"></script>
 </body>
 </html>
