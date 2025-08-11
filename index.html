@@ -2,92 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bria Yasir - Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
 
-  <!-- Theme Toggle -->
-  <div class="theme-toggle">
-    <label class="switch">
-      <input type="checkbox" id="theme-switch">
-      <span class="slider"></span>
-    </label>
-    <span id="theme-label">Light</span>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <img src="https://via.placeholder.com/150" alt="Profile" class="profile-pic"/>
-      <h1 class="fade-in">Bria Yasir</h1>
-      <p id="typewriter" class="fade-in delay-1"></p>
+  <!-- Banner -->
+  <header class="banner">
+    <div class="banner-content">
+      <h1 class="name">Bria Yasir</h1>
+      <p id="typewriter"></p>
     </div>
-  </section>
+  </header>
 
   <!-- Skills Section -->
-  <section class="skills">
+  <section class="skills section">
     <h2>Skills</h2>
     <div class="skills-grid">
-      <div class="skill-card" data-skill="Python expert with 3+ years experience">
-        <img src="https://via.placeholder.com/80" alt="Python"/>
+      <div class="skill-card">
+        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=150&q=80" alt="Python" />
         <p>Python</p>
       </div>
-      <div class="skill-card" data-skill="Skilled in building ETL pipelines">
-        <img src="https://via.placeholder.com/80" alt="SQL"/>
+      <div class="skill-card">
+        <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=150&q=80" alt="SQL" />
         <p>SQL</p>
       </div>
-      <div class="skill-card" data-skill="AWS cloud services for data engineering">
-        <img src="https://via.placeholder.com/80" alt="AWS"/>
+      <div class="skill-card">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=150&q=80" alt="AWS" />
         <p>AWS</p>
       </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section class="projects">
+  <section class="projects section">
     <h2>Projects</h2>
     <div class="projects-grid">
-      <div class="project-card" data-title="Project One" data-desc="Description of project one" data-img="https://via.placeholder.com/400">
-        <img src="https://via.placeholder.com/300" alt="Project 1"/>
-        <h3>Project One</h3>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Data Pipeline Automation" />
+        <h3>Data Pipeline Automation</h3>
+        <p>Automated ETL pipeline using Python and AWS Lambda.</p>
       </div>
-      <div class="project-card" data-title="Project Two" data-desc="Description of project two" data-img="https://via.placeholder.com/400">
-        <img src="https://via.placeholder.com/300" alt="Project 2"/>
-        <h3>Project Two</h3>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Data Warehouse Design" />
+        <h3>Data Warehouse Design</h3>
+        <p>Designed scalable Redshift warehouse for analytics.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Real-time Dashboard" />
+        <h3>Real-time Dashboard</h3>
+        <p>Built real-time KPI dashboard with Streamlit.</p>
       </div>
     </div>
+    <a href="https://github.com/briayasir" class="github-btn" target="_blank" rel="noopener noreferrer">View More on GitHub</a>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2025 Bria Yasir. All Rights Reserved.</p>
+    <p>© 2025 Bria Yasir</p>
   </footer>
 
-  <!-- LinkedIn -->
-  <a href="#" class="linkedin-icon" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"/>
-  </a>
-
-  <!-- Skill Modal -->
-  <div id="skill-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p id="skill-info"></p>
-    </div>
-  </div>
-
-  <!-- Project Modal -->
-  <div id="project-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <img id="project-img" src="" alt="Project"/>
-      <h3 id="project-title"></h3>
-      <p id="project-desc"></p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
