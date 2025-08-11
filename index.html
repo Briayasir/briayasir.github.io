@@ -1,78 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bria Yasir - Data Engineer</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bria Yasir — Data Engineer</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Animated background layers -->
+  <div class="bg-layer layer-1"></div>
+  <div class="bg-layer layer-2"></div>
 
-    <!-- Theme Toggle -->
-    <div class="toggle-wrapper">
-        <label class="switch">
-            <input type="checkbox" id="theme-checkbox">
-            <span class="slider"></span>
-        </label>
-        <span id="theme-label">Light</span>
-    </div>
+  <!-- Theme Toggle (top-right) -->
+  <div class="toggle-wrapper" aria-hidden="false">
+    <label class="switch" aria-label="Toggle theme">
+      <input type="checkbox" id="theme-checkbox" />
+      <span class="slider"></span>
+    </label>
+    <span id="theme-label">Light</span>
+  </div>
 
+  <!-- Main container -->
+  <main class="container">
     <!-- Header -->
-    <header>
+    <header class="hero">
+      <div class="hero-left">
+        <!-- Profile circle (replace img src with your photo if you want) -->
+        <div class="profile-wrap">
+          <img id="profile-img" alt="Bria Yasir" src="data:image/svg+xml;utf8,
+            <svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
+              <defs><linearGradient id='g' x1='0' x2='1'><stop stop-color='%23f6d365' offset='0'/><stop stop-color='%23fda085' offset='1'/></linearGradient></defs>
+              <rect width='100%' height='100%' fill='url(%23g)' rx='200'/>
+              <text x='50%' y='54%' text-anchor='middle' font-size='140' font-family='Arial' fill='%23111'>B</text>
+            </svg>" />
+        </div>
+      </div>
+
+      <div class="hero-right">
         <h1>Bria Yasir</h1>
-        <p>Data Engineer</p>
+        <p class="subtitle">Data Engineer — scalable pipelines · cloud data lakes · ETL automation</p>
+        <div class="hero-actions">
+          <a class="cta" href="#projects">See Projects</a>
+          <a class="muted" href="#contact">Contact</a>
+        </div>
+      </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Data Engineer with expertise in building scalable data pipelines, optimizing database performance, and deploying analytics solutions using modern cloud technologies.</p>
+    <!-- About -->
+    <section id="about" class="card">
+      <h2>About</h2>
+      <p>Experienced Data Engineer focused on building robust ETL pipelines, optimizing large-scale data processing using Spark & Kafka, and designing cloud-native data lakes on AWS. Passionate about automation, observability, and data quality.</p>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Python</li>
-            <li>SQL</li>
-            <li>Hadoop</li>
-            <li>Spark</li>
-            <li>AWS</li>
-            <li>Airflow</li>
-            <li>ETL Pipelines</li>
-            <li>Data Warehousing</li>
-        </ul>
+    <!-- Skills -->
+    <section id="skills" class="card">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <!-- skill cards - data-info will show in modal -->
+        <button class="skill" data-title="Python" data-info="Proficient in Python for data processing (pandas, pySpark), scripting, and automation.">
+          <div class="skill-icon">🐍</div>
+          <div class="skill-name">Python</div>
+        </button>
+
+        <button class="skill" data-title="SQL" data-info="Advanced SQL for analytics, window functions, query optimization, and data modeling.">
+          <div class="skill-icon">🗄️</div>
+          <div class="skill-name">SQL</div>
+        </button>
+
+        <button class="skill" data-title="Spark" data-info="Distributed data processing using Apache Spark — batch & streaming with PySpark/Scala.">
+          <div class="skill-icon">⚡</div>
+          <div class="skill-name">Spark</div>
+        </button>
+
+        <button class="skill" data-title="Kafka" data-info="Real-time messaging and streaming using Apache Kafka for event-driven pipelines.">
+          <div class="skill-icon">📡</div>
+          <div class="skill-name">Kafka</div>
+        </button>
+
+        <button class="skill" data-title="AWS" data-info="AWS S3, Glue, Athena, EMR & IAM for secure, scalable cloud data platforms.">
+          <div class="skill-icon">☁️</div>
+          <div class="skill-name">AWS</div>
+        </button>
+
+        <button class="skill" data-title="Airflow" data-info="Workflow automation with Apache Airflow for reliable ETL orchestration and monitoring.">
+          <div class="skill-icon">🧭</div>
+          <div class="skill-name">Airflow</div>
+        </button>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-card" data-title="Real-time Data Pipeline" data-desc="Designed and deployed a real-time streaming data pipeline for e-commerce analytics using Kafka, Spark Streaming, and AWS S3.">
-            <h3>Real-time Data Pipeline</h3>
-        </div>
-        <div class="project-card" data-title="Cloud Data Lake" data-desc="Built a cloud-based data lake using AWS S3, Glue, and Athena for scalable storage and querying of large datasets.">
-            <h3>Cloud Data Lake</h3>
-        </div>
-        <div class="project-card" data-title="ETL Workflow Automation" data-desc="Automated ETL workflows with Apache Airflow, improving data ingestion speed and reliability.">
-            <h3>ETL Workflow Automation</h3>
-        </div>
+    <!-- Projects -->
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card" data-title="Real-time Data Pipeline" data-desc="Designed & deployed a real-time streaming pipeline for e-commerce analytics using Kafka, Spark Streaming, and AWS S3. Scales to millions of events/day.">
+          <img class="project-thumb" alt="pipeline" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><rect width='100%' height='100%' fill='%23e8f1ff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23084' font-size='22'>Real-time Pipeline</text></svg>">
+          <h3>Real-time Data Pipeline</h3>
+          <p class="muted small">Kafka · Spark · AWS</p>
+        </article>
+
+        <article class="project-card" data-title="Cloud Data Lake" data-desc="Built a secure data lake using AWS S3, Glue, and Athena to centralize multi-tenant data and accelerate analytics.">
+          <img class="project-thumb" alt="datalake" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><rect width='100%' height='100%' fill='%23fff0e6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23b44' font-size='22'>Cloud Data Lake</text></svg>">
+          <h3>Cloud Data Lake</h3>
+          <p class="muted small">S3 · Glue · Athena</p>
+        </article>
+
+        <article class="project-card" data-title="ETL Workflow Automation" data-desc="Automated ETL workflows with Airflow, built retries, SLA alerts and improved throughput by 40%.">
+          <img class="project-thumb" alt="airflow" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'><rect width='100%' height='100%' fill='%23f0ffe8'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23386' font-size='22'>ETL Automation</text></svg>">
+          <h3>ETL Workflow Automation</h3>
+          <p class="muted small">Airflow · ETL</p>
+        </article>
+      </div>
     </section>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 id="modal-title"></h2>
-            <p id="modal-desc"></p>
-        </div>
-    </div>
+    <!-- Contact -->
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:bria.yasir@example.com">bria.yasir@example.com</a></p>
+      <p>GitHub: <a href="https://github.com/briayasir" target="_blank">github.com/briayasir</a></p>
+    </section>
 
-    <!-- LinkedIn Icon -->
-    <a href="#" target="_blank" id="linkedin-link">
-        <i class="fab fa-linkedin"></i>
-    </a>
+    <footer class="footer">
+      <p>© 2025 Bria Yasir</p>
+    </footer>
+  </main>
 
-    <script src="script.js"></script>
-</body>
-</html>
+  <!-- Skill Modal -->
+  <div id="skill-modal" class="modal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close skill info">&times
