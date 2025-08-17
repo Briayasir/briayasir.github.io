@@ -131,7 +131,7 @@ h2 {
 }
 .about p {
   max-width: 800px;
-  text: center;
+  text-align: center;
   margin: 0 auto;
   font-size: 1.15rem;
   line-height: 1.6;
@@ -149,7 +149,7 @@ h2 {
 .project-card {
   background: white;
   color: #333;
-  text: center;
+  text-align: center;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 6px 12px rgb(0 0 0 / 0.1);
