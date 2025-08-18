@@ -139,10 +139,21 @@ h2 {
 
 /* Skills & Projects Grid */
 .skills-grid,
-.projects-grid {
+.projects-grid,
+.experience-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
+}
+
+/* Default: mobile-first, 1 column for projects/experience */
+.projects-grid,
+.experience-grid {
+  grid-template-columns: 1fr;
+}
+
+/* Skills can auto-fit smaller tiles */
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .skill-card,
@@ -175,6 +186,27 @@ body.dark .project-card {
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 15px;
+}
+
+/* Experience cards reuse project-card styles */
+.exp-card {
+  background: white;
+  color: #333;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgb(0 0 0 / 0.1);
+}
+body.dark .exp-card {
+  background: #222;
+  color: #eee;
+  box-shadow: 0 6px 12px rgb(255 255 255 / 0.1);
+}
+.exp-card ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+.exp-card li {
+  margin: 6px 0;
 }
 
 /* GitHub button */
@@ -223,5 +255,23 @@ footer {
 @media (max-width: 600px) {
   .skills-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+/* Tablet and up: 2 columns for projects and experience */
+@media (min-width: 600px) {
+  .projects-grid,
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Refine banner title on small screens */
+@media (max-width: 600px) {
+  .name {
+    font-size: 2.4rem;
+  }
+  #typewriter {
+    font-size: 1.1rem;
   }
 }
