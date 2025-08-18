@@ -209,3 +209,214 @@ reliability and introduced monitoring/alerting for early failure detection.</p>
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bria Yasir - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3" />
+  <script defer src="script.js?v=3"></script>
+</head>
+<body>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="theme-switch" />
+      <span class="slider"></span>
+    </label>
+    <span id="theme-label">Light</span>
+  </div>
+
+  <!-- Banner -->
+  <header class="banner">
+    <div class="banner-content">
+      <h1 class="name fade-in">Bria Yasir</h1>
+      <p id="typewriter" class="fade-in delay-1"></p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about section fade-in">
+    <h2>About Me</h2>
+    <p>
+      I am Bria Yasir, a seasoned Data Engineering Lead with over a decade of experience designing and delivering scalable data platforms across healthcare, finance, and enterprise domains. My expertise lies in building end-to-end ETL pipelines, lakehouse architectures, and real-time streaming systems using technologies like Python, SQL, Spark, Kafka, Snowflake, and Databricks. Throughout my career, I have helped organizations migrate legacy data systems to modern cloud-native solutions on Azure and AWS, enabling advanced analytics, business intelligence, and machine learning applications. I am passionate about creating reliable, future-ready platforms that simplify decision-making and unlock business value. Beyond the technical work, I enjoy mentoring engineering teams, driving architecture strategy, and solving complex data challenges with a balance of innovation and practicality. My goal is to continue empowering businesses with clean, well-modeled, and compliant data systems that serve as the foundation for analytics and AI-driven transformation.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills section fade-in">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Programming & Scripting</h3>
+        <ul>
+          <li>Python for ETL, validation, automation</li>
+          <li>Advanced SQL: CTEs, window functions, tuning</li>
+          <li>Java / Scala for Spark & Kafka</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Data Engineering & Processing</h3>
+        <ul>
+          <li>Batch and real-time pipelines: Spark, Flink, Databricks</li>
+          <li>Streaming: Kafka, Spark Streaming, Flink</li>
+          <li>Workflow orchestration: Apache Airflow, ADF</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>ETL & Transformations</h3>
+        <ul>
+          <li>Talend, Apache NiFi, Informatica, SSIS</li>
+          <li>Modular SQL transformations with dbt</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Warehousing & Lakehouse</h3>
+        <ul>
+          <li>Snowflake, Redshift, BigQuery, Synapse</li>
+          <li>Databricks & Delta Lake</li>
+          <li>Layered modeling: Bronze, Silver, Gold</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Modeling & Architecture</h3>
+        <ul>
+          <li>Star/Snowflake dimensional modeling</li>
+          <li>Domain-driven design for data platforms</li>
+          <li>Scalability, reusability, reliability</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Governance & Compliance</h3>
+        <ul>
+          <li>Lineage, masking, access control with Apache Atlas</li>
+          <li>HIPAA & GDPR compliance</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Cloud Platforms</h3>
+        <ul>
+          <li>AWS: S3, Glue, EMR, Lambda</li>
+          <li>Azure: ADF, Synapse, HDInsight, Blob</li>
+          <li>GCP: BigQuery, Dataflow, Pub/Sub</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Databases & Storage</h3>
+        <ul>
+          <li>RDBMS: PostgreSQL, Oracle, MySQL</li>
+          <li>NoSQL: MongoDB, Cassandra, DynamoDB</li>
+          <li>Time-Series: InfluxDB; Columnar: Parquet, ORC</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Analytics & ML Enablement</h3>
+        <ul>
+          <li>ML datasets delivery via Databricks</li>
+          <li>Scikit-learn, TensorFlow</li>
+          <li>BI: Power BI, Looker, Tableau</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects section fade-in">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=70" alt="Healthcare Data Lakehouse Migration" />
+        <h3>Healthcare Data Lakehouse Migration</h3>
+        <p><strong>Description:</strong>  Migrated legacy ETL workflows to a modern lakehouse architecture in Azure using Databricks. Enabled real
+time patient data processing and compliance with HIPAA by implementing structured layers 
+(Bronze/Silver/Gold) and role-based data access.</p>
+        <p><strong>Technologies:</strong> Python, AWS Lambda, S3, Glue</p>
+        <p><strong>Link:</strong> <a href="https://github.com/Briayasir/Healthcare-Data-Lakehouse-Migration" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=70" alt="Real-Time Financial Transactions" />
+        <h3> Real-Time Financial Transaction Monitoring</h3>
+        <p><strong>Description:</strong> Designed a real-time fraud detection pipeline using Kafka and Spark Streaming. Improved detection latency 
+by 60% and enabled alert-based workflows for compliance teams via AWS Lambda and S3-based alert 
+logging.</p>
+        <p><strong>Technologies:</strong> AWS Redshift, SQL, ETL</p>
+        <p><strong>Link:</strong> <a href="https://github.com/Briayasir/Real-Time-Financial-Transaction-Monitoring" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1600&q=70" alt="Enterprise BI Enablement" />
+        <h3>Enterprise BI Enablement Platform</h3>
+        <p><strong>Description:</strong>Built centralized data marts and semantic models in Snowflake to support self-service analytics. Collaborated 
+with analysts and stakeholders to deliver KPIs via Power BI, reducing report turnaround time by 40%.</p>
+        <p><strong>Technologies:</strong> Streamlit, Python, REST APIs</p>
+        <p><strong>Link:</strong> <a href="https://github.com/Briayasir/Enterprise-BI-Enablement-Platform" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1600&q=70" alt="Data Pipeline Modernization" />
+        <h3>Data Pipeline Modernization Initiative</h3>
+        <p><strong>Description:</strong>Replaced fragile batch jobs with modular ETL pipelines using Talend and Airflow. Improved pipeline 
+reliability and introduced monitoring/alerting for early failure detection.</p>
+        <p><strong>Technologies:</strong> Streamlit, Python, REST APIs</p>
+        <p><strong>Link:</strong> <a href="https://github.com/briayasir/realtime-dashboard" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
+      </div>
+    </div>
+    <a href="https://github.com/briayasir" class="github-btn" target="_blank" rel="noopener noreferrer">View More on GitHub</a>
+  </section>
+
+  <!-- Experience Section (moved under Projects) -->
+  <section class="experience section fade-in">
+    <h2>Professional Experience</h2>
+    <div class="experience-grid">
+      <div class="exp-card">
+        <h3>Data Engineering Lead</h3>
+        <ul>
+          <li>Designed lakehouse architectures on Azure/AWS with Databricks & Delta Lake.</li>
+          <li>Migrated legacy ETL to modular pipelines using ADF, Talend, Airflow.</li>
+          <li>Delivered streaming with Kafka, Spark Streaming, and Flink.</li>
+          <li>Implemented governance with Apache Atlas; ensured HIPAA & GDPR compliance.</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <h3>Senior Data Engineer</h3>
+        <ul>
+          <li>Built ML-ready datasets; enabled BI with Power BI, Looker, Tableau.</li>
+          <li>CI/CD and IaC with Azure DevOps, GitLab CI, Terraform/Pulumi/CloudFormation.</li>
+          <li>Optimized Snowflake/Redshift/BigQuery performance and costs.</li>
+          <li>Improved reliability and observability across data platforms.</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <h3>Data Platform Architect</h3>
+        <ul>
+          <li>Defined domain-driven data models and governance standards.</li>
+          <li>Led cross-functional teams to deliver cloud-native analytics platforms.</li>
+          <li>Implemented cost-aware storage/compute strategies across clouds.</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <h3>Analytics Enablement Lead</h3>
+        <ul>
+          <li>Delivered curated marts and semantic layers for BI and ML workloads.</li>
+          <li>Reduced dashboard turnaround by 40% with standardized metrics.</li>
+          <li>Partnered with stakeholders to align data with business KPIs.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Bria Yasir</p>
+  </footer>
+
+  <!-- LinkedIn Icon -->
+  <a href="https://linkedin.com/in/briayasir" target="_blank" class="linkedin-icon" rel="noopener noreferrer">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+  </a>
+
+</body>
+</html>
