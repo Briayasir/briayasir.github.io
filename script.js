@@ -28,6 +28,10 @@ function typeWriter() {
     i++;
     setTimeout(typeWriter, 100);
   }
+  if (i === typewriterText.length) {
+    // Hide the caret once typing is complete
+    typewriterEl.style.borderRight = 'none';
+  }
 }
 
 setTimeout(typeWriter, 800);
