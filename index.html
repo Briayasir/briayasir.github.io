@@ -7,8 +7,309 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4" />
-  <script defer src="script.js?v=4"></script>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark {
+      background: #121212;
+      color: #eee;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      animation: fadeInAnim 1s forwards;
+    }
+    .fade-in.delay-1 {
+      animation-delay: 0.8s;
+    }
+    @keyframes fadeInAnim {
+      to { opacity: 1; }
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    body.dark .theme-toggle { color: #eee; }
+    .switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+    .switch input { display: none; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc; border-radius: 24px; transition: 0.4s;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+      background-color: white; border-radius: 50%; transition: 0.4s;
+    }
+    input:checked + .slider { background-color: #2196F3; }
+    input:checked + .slider:before { transform: translateX(26px); }
+
+    /* Banner */
+    .banner {
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=70') center/cover no-repeat;
+      width: 100vw;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner-content {
+      background: rgba(0,0,0,0.55);
+      padding: 30px 60px;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 100%;
+      margin: auto;
+    }
+    .name {
+      font-size: 4rem;
+      font-weight: 900;
+      margin: 0;
+      font-family: Poppins, Inter, sans-serif;
+    }
+
+    /* Typewriter */
+    #typewriter {
+      border-right: 2px solid rgba(255,255,255,0.75);
+      white-space: pre-wrap;
+      overflow: hidden;
+      display: block;
+      font-size: 1.5rem;
+      margin-top: 15px;
+      max-width: 100%;
+      line-height: 1.4;
+    }
+
+    /* Contact info */
+    .contact-info {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 15px 25px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      font-size: 0.9rem;
+    }
+    .contact-info a {
+      color: white;
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    .section { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+    h2 { 
+      text-align: center; 
+      margin-bottom: 40px; 
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    body.dark h2 { color: #3498db; }
+    
+    .about p {
+      max-width: 85%;
+      text-align: center;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.75;
+    }
+
+    /* Skills, Projects, Experience Grids */
+    .skills-grid,
+    .projects-grid,
+    .experience-grid {
+      display: grid;
+      gap: 20px;
+    }
+    /* Default: mobile-first */
+    .projects-grid,
+    .experience-grid { grid-template-columns: 1fr; }
+    /* Skills: 1 column mobile; overridden at breakpoints */
+    .skills-grid { grid-template-columns: 1fr; }
+
+    /* Cards */
+    .skill-card,
+    .project-card,
+    .exp-card {
+      background: white;
+      color: #333;
+      text-align: left;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      border-left: 4px solid #3498db;
+    }
+    body.dark .skill-card,
+    body.dark .project-card,
+    body.dark .exp-card {
+      background: #222;
+      color: #eee;
+      box-shadow: 0 8px 16px rgba(255,255,255,0.1);
+    }
+    .skill-card:hover,
+    .project-card:hover,
+    .exp-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    /* Project images */
+    .project-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    /* Skills list styling */
+    .skill-card h3,
+    .project-card h3,
+    .exp-card h3 { 
+      margin: 0 0 15px; 
+      font-size: 1.3rem; 
+      color: #2c3e50;
+    }
+    body.dark .skill-card h3,
+    body.dark .project-card h3,
+    body.dark .exp-card h3 { 
+      color: #3498db; 
+    }
+    .skill-card ul { margin: 0; padding-left: 18px; }
+    .skill-card li { margin: 8px 0; }
+
+    /* Experience specific styling */
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .exp-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    body.dark .exp-title { color: #3498db; }
+    .exp-company {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+    .exp-duration {
+      font-size: 0.9rem;
+      color: #95a5a6;
+      font-style: italic;
+    }
+    .exp-card ul { margin: 15px 0 0; padding-left: 18px; }
+    .exp-card li { margin: 8px 0; line-height: 1.6; }
+
+    /* GitHub button */
+    .github-btn {
+      display: block;
+      max-width: 250px;
+      margin: 40px auto 0;
+      padding: 12px 25px;
+      background: #24292e;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .github-btn:hover { background: #444c56; }
+
+    /* Footer */
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+    body.dark footer {
+      background: #1a1a1a;
+    }
+
+    /* LinkedIn Icon */
+    .linkedin-icon { 
+      position: fixed; 
+      bottom: 20px; 
+      right: 20px; 
+      z-index: 1100; 
+    }
+    .linkedin-icon img { 
+      width: 40px; 
+      height: 40px; 
+      filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); 
+      transition: filter 0.3s ease; 
+    }
+    .linkedin-icon:hover img { 
+      filter: drop-shadow(0 0 6px #0A66C2); 
+    }
+
+    /* Skills grid breakpoints */
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .exp-header { flex-direction: column; align-items: flex-start; }
+    }
+    /* Tablet */
+    @media (min-width: 600px) {
+      .projects-grid,
+      .experience-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    /* Laptop */
+    @media (min-width: 992px) {
+      .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Small-screen banner adjustments */
+    @media (max-width: 600px) {
+      .name { font-size: 2.4rem; }
+      #typewriter { font-size: 1.05rem; white-space: pre-wrap; }
+      .banner-content { padding: 20px; }
+      .contact-info { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,6 +327,12 @@
     <div class="banner-content">
       <h1 class="name fade-in">Bria Yasir</h1>
       <p id="typewriter" class="fade-in delay-1"></p>
+      <div class="contact-info fade-in delay-1">
+        <span>📧 briayasir@gmail.com</span>
+        <span>📱 (215) 650-3625</span>
+        <span>📍 Dayton, OH</span>
+        <a href="https://briayasir.github.io/" target="_blank">🌐 Portfolio</a>
+      </div>
     </div>
   </header>
 
@@ -33,82 +340,83 @@
   <section class="about section fade-in">
     <h2>About Me</h2>
     <p>
-      I am Bria Yasir, a seasoned Data Engineering Lead with over a decade of experience designing and delivering scalable data platforms across healthcare, finance, and enterprise domains. My expertise lies in building end-to-end ETL pipelines, lakehouse architectures, and real-time streaming systems using technologies like Python, SQL, Spark, Kafka, Snowflake, and Databricks. Throughout my career, I have helped organizations migrate legacy data systems to modern cloud-native solutions on Azure and AWS, enabling advanced analytics, business intelligence, and machine learning applications. I am passionate about creating reliable, future-ready platforms that simplify decision-making and unlock business value. Beyond the technical work, I enjoy mentoring engineering teams, driving architecture strategy, and solving complex data challenges with a balance of innovation and practicality. My goal is to continue empowering businesses with clean, well-modeled, and compliant data systems that serve as the foundation for analytics and AI-driven transformation.
+      Seasoned Data Engineering Professional with 10+ years of expertise in building cloud-native platforms, modern lakehouse architectures, and large-scale data pipelines across healthcare, finance, and enterprise domains. I specialize in designing and optimizing end-to-end ETL processes, real-time streaming solutions, and analytics-ready data models using Databricks, Snowflake, Spark, Kafka, and advanced transformation frameworks. With deep expertise in Azure, AWS, and GCP, I focus on performance tuning, compliance, and data reliability while delivering ML-ready datasets that enable advanced analytics and drive automation through governance, CI/CD, and infrastructure-as-code practices.
     </p>
   </section>
 
   <!-- Skills Section -->
   <section class="skills section fade-in">
-    <h2>Skills</h2>
+    <h2>Technical Skills</h2>
     <div class="skills-grid">
       <div class="skill-card">
         <h3>Programming & Scripting</h3>
         <ul>
-          <li>Python for ETL, validation, automation</li>
-          <li>Advanced SQL: CTEs, window functions, tuning</li>
-          <li>Java / Scala for Spark & Kafka</li>
+          <li>Python (ETL, automation, validation)</li>
+          <li>Advanced SQL (CTEs, window functions, query tuning)</li>
+          <li>Scala, Java, Bash, Shell scripting</li>
         </ul>
       </div>
       <div class="skill-card">
         <h3>Data Engineering & Processing</h3>
         <ul>
-          <li>Batch and real-time pipelines: Spark, Flink, Databricks</li>
-          <li>Streaming: Kafka, Spark Streaming, Flink</li>
-          <li>Workflow orchestration: Apache Airflow, ADF</li>
+          <li>Apache Spark, PySpark, Databricks</li>
+          <li>Apache Flink, Kafka, Spark Streaming</li>
+          <li>Structured Streaming, Apache Beam, Airflow, Luigi</li>
         </ul>
       </div>
       <div class="skill-card">
-        <h3>ETL & Transformations</h3>
+        <h3>ETL & Data Transformation</h3>
         <ul>
           <li>Talend, Apache NiFi, Informatica, SSIS</li>
-          <li>Modular SQL transformations with dbt</li>
+          <li>Azure Data Factory, dbt, Matillion, DataStage</li>
         </ul>
       </div>
       <div class="skill-card">
-        <h3>Warehousing & Lakehouse</h3>
+        <h3>Data Warehousing & Lakehouse</h3>
         <ul>
-          <li>Snowflake, Redshift, BigQuery, Synapse</li>
-          <li>Databricks & Delta Lake</li>
-          <li>Layered modeling: Bronze, Silver, Gold</li>
+          <li>Snowflake, Amazon Redshift, Google BigQuery</li>
+          <li>Azure Synapse, Databricks Delta Lake</li>
+          <li>Hive, Presto, Trino</li>
         </ul>
       </div>
       <div class="skill-card">
-        <h3>Modeling & Architecture</h3>
+        <h3>Data Modeling & Architecture</h3>
         <ul>
-          <li>Star/Snowflake dimensional modeling</li>
-          <li>Domain-driven design for data platforms</li>
-          <li>Scalability, reusability, reliability</li>
+          <li>Star Schema, Snowflake Schema, Data Vault</li>
+          <li>Kimball & Inmon methodologies</li>
+          <li>Bronze-Silver-Gold layering, Lakehouse architecture</li>
         </ul>
       </div>
       <div class="skill-card">
-        <h3>Governance & Compliance</h3>
+        <h3>Data Governance & Security</h3>
         <ul>
-          <li>Lineage, masking, access control with Apache Atlas</li>
-          <li>HIPAA & GDPR compliance</li>
+          <li>Apache Atlas, Alation, Collibra</li>
+          <li>Data lineage, PII masking, RBAC/ABAC access control</li>
+          <li>HIPAA, GDPR, SOC2 compliance</li>
         </ul>
       </div>
       <div class="skill-card">
-        <h3>Cloud Platforms</h3>
+        <h3>Cloud Platforms & Services</h3>
         <ul>
-          <li>AWS: S3, Glue, EMR, Lambda</li>
-          <li>Azure: ADF, Synapse, HDInsight, Blob</li>
-          <li>GCP: BigQuery, Dataflow, Pub/Sub</li>
+          <li>Azure: ADF, Synapse, HDInsight, Blob Storage, Databricks</li>
+          <li>AWS: S3, Glue, EMR, Lambda, Redshift, Athena, Kinesis</li>
+          <li>GCP: BigQuery, Dataflow, Dataproc, Pub/Sub</li>
         </ul>
       </div>
       <div class="skill-card">
         <h3>Databases & Storage</h3>
         <ul>
-          <li>RDBMS: PostgreSQL, Oracle, MySQL</li>
-          <li>NoSQL: MongoDB, Cassandra, DynamoDB</li>
-          <li>Time-Series: InfluxDB; Columnar: Parquet, ORC</li>
+          <li>PostgreSQL, Oracle, SQL Server, MySQL, DB2</li>
+          <li>MongoDB, Cassandra, DynamoDB, Neo4j</li>
+          <li>InfluxDB, HBase, Elasticsearch, Parquet, ORC, Avro</li>
         </ul>
       </div>
       <div class="skill-card">
         <h3>Analytics & ML Enablement</h3>
         <ul>
-          <li>ML datasets delivery via Databricks</li>
-          <li>Scikit-learn, TensorFlow</li>
-          <li>BI: Power BI, Looker, Tableau</li>
+          <li>BI-ready data marts, Feature engineering pipelines</li>
+          <li>Scikit-learn, TensorFlow, PyTorch, MLflow</li>
+          <li>Power BI, Tableau, Looker, Qlik Sense</li>
         </ul>
       </div>
     </div>
@@ -116,82 +424,107 @@
 
   <!-- Projects Section -->
   <section class="projects section fade-in">
-    <h2>Projects</h2>
+    <h2>Key Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=70" alt="Healthcare Data Lakehouse Migration" />
-        <h3>Healthcare Data Lakehouse Migration</h3>
-        <p><strong>Description:</strong>  Migrated legacy ETL workflows to a modern lakehouse architecture in Azure using Databricks. Enabled real
-time patient data processing and compliance with HIPAA by implementing structured layers 
-(Bronze/Silver/Gold) and role-based data access.</p>
-        <p><strong>Technologies:</strong> Python, AWS Lambda, S3, Glue</p>
-        <p><strong>Link:</strong> <a href="https://github.com/Briayasir/Healthcare-Data-Lakehouse-Migration" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=70" alt="Healthcare Data Lakehouse" />
+        <h3>Healthcare Data Lakehouse Modernization</h3>
+        <p><strong>Company:</strong> Contour Software</p>
+        <p><strong>Description:</strong> Migrated on-premise ETL workflows into a Databricks and Snowflake-based lakehouse using Delta Lake and dbt, structured with Bronze-Silver-Gold layers. Enforced governance with Apache Atlas and role-based security to ensure HIPAA compliance, while enabling real-time patient data insights and predictive analytics.</p>
+        <p><strong>Technologies:</strong> Databricks, Snowflake, Delta Lake, dbt, Apache Atlas, Azure</p>
       </div>
       <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=70" alt="Real-Time Financial Transactions" />
-        <h3> Real-Time Financial Transaction Monitoring</h3>
-        <p><strong>Description:</strong> Designed a real-time fraud detection pipeline using Kafka and Spark Streaming. Improved detection latency 
-by 60% and enabled alert-based workflows for compliance teams via AWS Lambda and S3-based alert 
-logging.</p>
-        <p><strong>Technologies:</strong> AWS Redshift, SQL, ETL</p>
-        <p><strong>Link:</strong> <a href="https://github.com/Briayasir/Real-Time-Financial-Transaction-Monitoring" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=70" alt="Enterprise BI Platform" />
+        <h3>Enterprise BI & Analytics Platform</h3>
+        <p><strong>Company:</strong> Contour Software</p>
+        <p><strong>Description:</strong> Developed centralized data marts and semantic layers in Snowflake using dbt and automated ingestion pipelines with Airflow. Delivered KPIs through Power BI and Looker dashboards, improving self-service analytics and reducing reporting cycles by 40%.</p>
+        <p><strong>Technologies:</strong> Snowflake, dbt, Airflow, Power BI, Looker</p>
       </div>
       <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1600&q=70" alt="Enterprise BI Enablement" />
-        <h3>Enterprise BI Enablement Platform</h3>
-        <p><strong>Description:</strong>Built centralized data marts and semantic models in Snowflake to support self-service analytics. Collaborated 
-with analysts and stakeholders to deliver KPIs via Power BI, reducing report turnaround time by 40%.</p>
-        <p><strong>Technologies:</strong> Streamlit, Python, REST APIs</p>
-        <p><strong>Link:</strong> <a href="https://github.com/Briayasir/Enterprise-BI-Enablement-Platform" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
+        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1600&q=70" alt="Real-Time Fraud Detection" />
+        <h3>Real-Time Financial Fraud Detection</h3>
+        <p><strong>Company:</strong> VentureDive</p>
+        <p><strong>Description:</strong> Built streaming pipelines with Kafka, Spark Streaming, and AWS Lambda integrated with S3-based alerting. Reduced detection latency by 60% and automated fraud risk workflows, empowering compliance teams with near real-time monitoring and proactive interventions.</p>
+        <p><strong>Technologies:</strong> Kafka, Spark Streaming, AWS Lambda, S3</p>
       </div>
       <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1600&q=70" alt="Data Pipeline Modernization" />
-        <h3>Data Pipeline Modernization Initiative</h3>
-        <p><strong>Description:</strong>Replaced fragile batch jobs with modular ETL pipelines using Talend and Airflow. Improved pipeline 
-reliability and introduced monitoring/alerting for early failure detection.</p>
-        <p><strong>Technologies:</strong> Streamlit, Python, REST APIs</p>
-        <p><strong>Link:</strong> <a href="https://github.com/briayasir/realtime-dashboard" target="_blank" rel="noopener noreferrer">GitHub Repo</a></p>
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1600&q=70" alt="Predictive Patient Analytics" />
+        <h3>Predictive Patient Readmission Modeling</h3>
+        <p><strong>Company:</strong> NorthBay Solutions</p>
+        <p><strong>Description:</strong> Engineered ML-ready time-series datasets using Spark, Databricks, and Delta Lake for patient outcome prediction. Collaborated with data scientists leveraging Scikit-learn and MLflow to deploy models that improved readmission risk identification and early intervention planning.</p>
+        <p><strong>Technologies:</strong> Spark, Databricks, Delta Lake, Scikit-learn, MLflow</p>
       </div>
     </div>
     <a href="https://github.com/briayasir" class="github-btn" target="_blank" rel="noopener noreferrer">View More on GitHub</a>
   </section>
 
-  <!-- Experience Section (moved under Projects) -->
+  <!-- Experience Section -->
   <section class="experience section fade-in">
     <h2>Professional Experience</h2>
     <div class="experience-grid">
       <div class="exp-card">
-        <h3>Data Engineering Lead</h3>
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Data Engineer Lead</div>
+            <div class="exp-company">Contour Software</div>
+          </div>
+          <div class="exp-duration">03/2022 – Present</div>
+        </div>
         <ul>
-          <li>Designed lakehouse architectures on Azure/AWS with Databricks & Delta Lake.</li>
-          <li>Migrated legacy ETL to modular pipelines using ADF, Talend, Airflow.</li>
-          <li>Delivered streaming with Kafka, Spark Streaming, and Flink.</li>
-          <li>Implemented governance with Apache Atlas; ensured HIPAA & GDPR compliance.</li>
+          <li>Architected enterprise-grade multi-cloud platforms leveraging Azure, GCP, and Databricks for healthcare clients</li>
+          <li>Orchestrated full-scale lakehouse ecosystem integrating Delta Lake with Snowflake to support BI, AI, and application workloads</li>
+          <li>Operationalized dbt for transformation lifecycle management and standardized Airflow-based orchestration across 100+ production pipelines</li>
+          <li>Enforced governance frameworks with Apache Atlas to ensure data lineage, regulatory compliance, and controlled access for HIPAA-driven use cases</li>
+          <li>Optimized compute and storage infrastructure through dynamic scaling, achieving cost reductions exceeding 35%</li>
+          <li>Mentored a team of 8 engineers across data engineering, DevOps, and ML ops</li>
         </ul>
       </div>
       <div class="exp-card">
-        <h3>Senior Data Engineer</h3>
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Cloud Data Engineer</div>
+            <div class="exp-company">VentureDive</div>
+          </div>
+          <div class="exp-duration">08/2018 – 02/2022</div>
+        </div>
         <ul>
-          <li>Built ML-ready datasets; enabled BI with Power BI, Looker, Tableau.</li>
-          <li>CI/CD and IaC with Azure DevOps, GitLab CI, Terraform/Pulumi/CloudFormation.</li>
-          <li>Optimized Snowflake/Redshift/BigQuery performance and costs.</li>
-          <li>Improved reliability and observability across data platforms.</li>
+          <li>Transitioned legacy ETL into Azure Data Factory pipelines, enabling scalable, event-driven workflows across multiple domains</li>
+          <li>Engineered Azure Data Lake Gen2 and Databricks pipelines supporting hybrid batch and streaming for patient data</li>
+          <li>Structured Delta Lake layers (Bronze, Silver, Gold) to deliver curated, governed, and reusable datasets</li>
+          <li>Automated deployments with Terraform and Azure DevOps, embedding CI/CD and validated Spark applications</li>
+          <li>Accelerated BI adoption by integrating Snowflake, reducing query latency by 55% and enhancing analytical efficiency</li>
         </ul>
       </div>
       <div class="exp-card">
-        <h3>Data Platform Architect</h3>
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Big Data Specialist</div>
+            <div class="exp-company">NorthBay Solutions</div>
+          </div>
+          <div class="exp-duration">01/2016 – 07/2018</div>
+        </div>
         <ul>
-          <li>Defined domain-driven data models and governance standards.</li>
-          <li>Led cross-functional teams to deliver cloud-native analytics platforms.</li>
-          <li>Implemented cost-aware storage/compute strategies across clouds.</li>
+          <li>Built scalable batch pipelines with Apache Spark and Hive to process structured and unstructured healthcare data</li>
+          <li>Implemented real-time ingestion using Kafka for patient monitoring sensors and medical device streams</li>
+          <li>Improved job runtimes by 45% through optimized joins, partitioning, and caching strategies</li>
+          <li>Consolidated datasets from EHR, lab systems, and insurance claims into a centralized Hadoop-based platform</li>
+          <li>Produced engineered time-series datasets enabling predictive models for clinical readmission risk</li>
         </ul>
       </div>
       <div class="exp-card">
-        <h3>Analytics Enablement Lead</h3>
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Data Engineer</div>
+            <div class="exp-company">CodeNinja</div>
+          </div>
+          <div class="exp-duration">07/2014 – 12/2015</div>
+        </div>
         <ul>
-          <li>Delivered curated marts and semantic layers for BI and ML workloads.</li>
-          <li>Reduced dashboard turnaround by 40% with standardized metrics.</li>
-          <li>Partnered with stakeholders to align data with business KPIs.</li>
+          <li>Automated ingestion pipelines using Talend, SQL Server, and Python to consolidate patient data across hospital systems</li>
+          <li>Standardized clinical records and diagnosis datasets into unified models supporting compliance and reporting</li>
+          <li>Reduced manual refresh effort by 60% through scheduled ETL workflows and automated validations</li>
+          <li>Implemented rigorous quality checks ensuring integrity and reliability of downstream analytics</li>
+          <li>Designed dimensional data marts supporting KPIs and executive dashboards for hospital management</li>
         </ul>
       </div>
     </div>
@@ -199,13 +532,74 @@ reliability and introduced monitoring/alerting for early failure detection.</p>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Bria Yasir</p>
+    <p>© 2025 Bria Yasir - Data Engineering Specialist | Cloud Lakehouse & ETL Architect</p>
+    <p>Databricks, Snowflake & Scalable Analytics Expert</p>
   </footer>
 
   <!-- LinkedIn Icon -->
   <a href="https://linkedin.com/in/briayasir" target="_blank" class="linkedin-icon" rel="noopener noreferrer">
     <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
   </a>
+
+  <script>
+    // Theme toggle
+    const themeSwitch = document.getElementById('theme-switch');
+    const themeLabel = document.getElementById('theme-label');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function setTheme(theme) {
+      document.body.classList.remove('light', 'dark');
+      document.body.classList.add(theme);
+      themeLabel.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
+      themeSwitch.checked = theme === 'dark';
+    }
+
+    // Set initial theme from system preference
+    setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+
+    themeSwitch.addEventListener('change', () => {
+      setTheme(themeSwitch.checked ? 'dark' : 'light');
+    });
+
+    // Typewriter effect
+    const typewriterEl = document.getElementById('typewriter');
+    const typewriterText = 'Data Engineering Specialist | Cloud Lakehouse & ETL Architect | Databricks, Snowflake & Scalable Analytics';
+    let i = 0;
+
+    function typeWriter() {
+      if (i < typewriterText.length) {
+        typewriterEl.textContent += typewriterText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+      if (i === typewriterText.length) {
+        // Hide the caret once typing is complete
+        typewriterEl.style.borderRight = 'none';
+      }
+    }
+
+    setTimeout(typeWriter, 800);
+
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.animationPlayState = 'running';
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      fader.style.animationPlayState = 'paused';
+      appearOnScroll.observe(fader);
+    });
+  </script>
 
 </body>
 </html>
