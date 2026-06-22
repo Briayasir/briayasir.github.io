@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Bria Yasir",
   title: "Data Solutions Architect | Cloud-Native Platforms | Real-Time Data Engineering",
-  email: "briayasir2@gmail.com",
+  email: "briayasir1@gmail.com",
   phone: "(215) 650-3625",
   location: "Dayton, OH 45401, USA",
   linkedin: "https://www.linkedin.com/in/bria-bushra-yasir-364686398/",
