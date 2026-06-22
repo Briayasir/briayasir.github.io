@@ -135,7 +135,7 @@ export function Hero() {
             variant="secondary"
             strength={0}
             href={personalInfo.resumePath}
-            download
+            download={personalInfo.resumeDownloadName}
             target="_blank"
             rel="noopener noreferrer"
             className="border-slate-300 bg-white text-slate-700 transition-colors duration-300 hover:border-[#11567f] hover:bg-[#11567f]/5 hover:text-[#11567f] dark:border-slate-600 dark:bg-slate-900/50 dark:text-slate-200 dark:hover:border-[#29b5e8] dark:hover:bg-[#29b5e8]/10 dark:hover:text-[#29b5e8]"

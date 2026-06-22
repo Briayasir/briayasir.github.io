@@ -158,7 +158,7 @@ export function Contact() {
 
               href={personalInfo.resumePath}
 
-              download
+              download={personalInfo.resumeDownloadName}
 
               target="_blank"
 

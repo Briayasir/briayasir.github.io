@@ -91,7 +91,7 @@ export function Navbar() {
         <div className="ml-auto flex shrink-0 items-center gap-3">
           <a
             href={personalInfo.resumePath}
-            download
+            download={personalInfo.resumeDownloadName}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden items-center gap-1.5 rounded-full border border-slate-300 bg-white/80 px-4 py-2.5 text-xs font-semibold text-slate-600 backdrop-blur-xl transition-colors duration-300 hover:border-[#11567f] hover:text-[#11567f] dark:border-slate-600 dark:bg-transparent dark:text-muted-foreground dark:hover:border-[#29b5e8] dark:hover:text-[#29b5e8] md:flex"
@@ -141,7 +141,7 @@ export function Navbar() {
               ))}
               <a
                 href={personalInfo.resumePath}
-                download
+                download={personalInfo.resumeDownloadName}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-white/10 py-3 text-sm font-semibold text-muted-foreground"

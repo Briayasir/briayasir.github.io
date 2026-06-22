@@ -9,6 +9,7 @@ export const personalInfo = {
   githubRepo: "https://github.com/Briayasir/briayasir.github.io",
   portfolio: "https://briayasir.github.io/",
   resumePath: "/resume.pdf",
+  resumeDownloadName: "Bria-Yasir.pdf",
   available: true,
 };
 
